@@ -35,8 +35,10 @@ app.get("/", (req, res) => {
 });
 require("./app/routes/serveur.routes")(app);
 
-// set port, listen for requests
+// set port and IP, listen for requests
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+const HOST = '20.19.33.63';
+app.listen(PORT, HOST, () => {
+  console.log(`Server is running on http://${HOST}:${PORT}.`);
 });
+
