@@ -25,4 +25,4 @@
       command: docker run -d --name back-pipeline -p 3000:3000 mdhiadhia/back-pipeline
 
     - name: Run the mongo-db container
-      command: docker run -d --name mongo-db --network container:back-pipeline mongo:latest
+      command: docker run -d --name mongo-db --network container:back-pipeline -v /home/ansadmin/data:/data/db mongo:latest
