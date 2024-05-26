@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    APP_NAME = "app-pipeline"
+    APP_NAME = "back-pipeline"
     RELEASE = "1.0.0"
     DOCKER_USER = "mdhiadhia"
     DOCKER_PASS = 'dockerhub'
@@ -16,13 +16,8 @@ pipeline {
         sh "npm install"
       }
     }
-
-    stage('Build the app') {
-      steps {
-        sh 'npm run build'
-      }
-    }
 /*
+
 stage('OWASP Dependency-Check Vulnerabilities') {
       steps {
         dependencyCheck additionalArguments: ''' 
@@ -45,8 +40,8 @@ stage('OWASP Dependency-Check Vulnerabilities') {
         }
       }
     }
-  */  
-
+    
+*/
     stage('Build Docker Image') {
             steps {
                 script {
