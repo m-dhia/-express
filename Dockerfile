@@ -1,4 +1,4 @@
-# Create image based off of the official Node 6 image
+# Create image based off of the official Node 6 image 
 FROM node:latest
 
 # Create a directory where our app will be placed
