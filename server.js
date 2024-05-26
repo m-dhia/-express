@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://4.233.223.134:4200"
+  origin: "http://20.19.33.63:4200/:4200"
 };
 
 app.use(cors(corsOptions));
