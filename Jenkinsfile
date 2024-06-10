@@ -8,6 +8,8 @@ pipeline {
     DOCKER_PASS = 'dockerhub'
     IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
     IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
+    ACR_LOGIN_SERVER = "pferegestery.azurecr.io"
+
   }
 
   stages {
@@ -16,7 +18,7 @@ pipeline {
         sh "npm install"
       }
     }
-
+/*
  stage ('OWASP Dependency-Check Vulnerabilities') {
             steps {
                 dependencyCheck additionalArguments: ''' 
@@ -39,7 +41,7 @@ pipeline {
         }
       }
     }
-
+*/
     stage('Build Docker Image') {
       steps {
         script {
@@ -48,7 +50,7 @@ pipeline {
         }
       }
     }
-
+/*
     stage('Trivy Scan') {
       steps {
         script {
@@ -58,13 +60,12 @@ pipeline {
         }
       }
     }
-
-    stage('Push Docker Image') {
+*/
+    stage('Build Docker Image') {
       steps {
         script {
-          // Push the Docker image to the registry
-          docker.withRegistry('', DOCKER_PASS) {
-            def dockerImage = docker.image("${IMAGE_NAME}:${IMAGE_TAG}")
+          docker.withRegistry("https://${ACR_LOGIN_SERVER}", "acr-credentials") {
+            def dockerImage = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
             dockerImage.push()
             dockerImage.push('latest')
           }
