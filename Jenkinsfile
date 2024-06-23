@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    APP_NAME = "back-pipeline"
+    APP_NAME = "back-app"
     RELEASE = "1.0.0"
     DOCKER_USER = "mdhiadhia"
     IMAGE_NAME = "${DOCKER_USER}/${APP_NAME}"
