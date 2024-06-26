@@ -3,7 +3,7 @@
   hosts: app
   tasks:
     - name: Pull the latest mdhiadhia/back-pipeline image
-      command: docker pull docker pull mdhiadhia/back-pipeline:latest
+      command: docker pull mdhiadhia/back-pipeline:latest
 
     - name: Stop and remove existing back-pipeline containers
       command: docker stop back-pipeline 
